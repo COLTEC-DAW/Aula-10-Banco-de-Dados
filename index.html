@@ -1,0 +1,1076 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>PHP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=792, user-scalable=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="libs/shower/themes/bright/styles/screen.css">
+  <link rel="stylesheet" href="libs/highlight/styles/default.css">
+  <link rel="stylesheet" type="text/css" href="css/960gs.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body class="list">
+    <header class="caption">
+      <h1>Banco de dados</h1>
+      <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+    </header>
+    <section class="slide cover" id="Cover">
+      <div>
+        <h2>Banco de dados</h2>
+        <p>João Eduardo Montandon</p>
+        <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+        <img src="images/wallpaper_coltec_wide.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          Imagine um sistema com três módulos principais: Produção, Vendas e Compras.
+        </p>
+        <img style="max-width: 80%;" src="images/arquivo.png" alt="" />
+        <p>
+          <em>Qual o problema desse modelo??</em>
+        </p>
+      </div>
+    </section>
+    <section class="slide section">
+      <div>
+        <h2>Redundância</h2>
+        <p>
+          Os dados do produto estão replicados em vários lugares
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Redundância</h2>
+        <p>
+          A redundância nem sempre é ruim!!
+        </p>
+        <ul>
+          <li><em>Controlada:</em> Acontece quando o próprio sistema gerencia a replicação dos dados. Geralmente é utilizada para aumentar o desempenho do sistema.</li>
+          <li><em>Não Controlada:</em> Acontece quando a replicação é feita sem o controle dos sistemas. Neste caso, apresenta diversos problemas tais como <em>redigitação</em> e <em>inconsistência de dados</em>.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Redundância</h2>
+        <p>
+          A solução para evitar a redundância não controlada está em fazer o <em>compartilhamento de dados</em>. Desta forma, a informação é armazenada apenas uma vez, e acessada de vários sistemas.
+        </p>
+        <img style="max-width: 80%;" src="images/bd.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Banco de Dados</h2>
+        <p>
+          Ao conjunto de arquivos integrados que atendem vários módulos dá-se o nome de <em>Banco de Dados</em>.
+        </p>
+        <p>
+          <b>Banco de Dados: </b> Conjunto de dados integrados que tem por objetivo atender a uma comunidade de usuários.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Banco de Dados</h2>
+        <p>
+          Para dar suporte ao compartilhamento de dados, os sistemas  -- e consequentemente sua estrutura -- se tornaram mais complexos, pois passaram a oferecer suporte a mecanismos de multiacesso, concorrência, etc.
+        </p>
+        <p>
+          Para auxiliar na manipulação dos dados em uma aplicação multiusuário, utilizamos um sistema específico, denominado <em>Sistema de Gerência de Banco de Dados (SGBD)</em>.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>SGBDs</h2>
+        <p>
+          <b>Sistemas Gerenciadores de Banco de Dados:</b> software que incorpora funções de definição, recuperação e alteração de dados em um banco de dados.
+        </p>
+        <p>
+          Permite a clara separação de manipulação dos dados e processamento do programa.
+        </p>
+        <p>
+          Aumenta produtividade, escalabilidade, modularização, etc.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>SGBDs</h2>
+        <p>
+          Existem vários tipos de SGBDs:
+        </p>
+        <ul>
+          <li>Hierárquico</li>
+          <li>Rede</li>
+          <li>Orientado a Objetos</li>
+          <li><b>Relacional</b></li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelos de Dados</h2>
+        <p>
+          Ao definir um banco de dados, precisamos descrever como os dados serão representados.
+        </p>
+        <p>
+          Geralmente os dados são descritos por meio de modelos, denominado <b>modelo de dados</b>.
+        </p>
+        <p>
+          Os modelos podem ser mais ou menos detalhistas, gráficos ou textuais, a depender do nível de abstração do modelo.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelos de Dados</h2>
+        <div class="container_12">
+          <div class="grid_8">
+            <p>
+              Existem vários modelos definidos na literatura. Dois modelos são mais utilizados:
+            </p>
+            <ol>
+              <li>Modelo conceitual</li>
+              <li>Modelo lógico</li>
+              <li>Modelo Físico</li>
+            </ol>
+          </div>
+          <div class="grid_4">
+            <img style="max-width: 100%;" src="images/modelos_abstracao.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Conceitual</h2>
+        <p>
+          Modelo que descreve a estrutura de dados de forma independente do SGBD.
+        </p>
+        <p>
+          Registra os dados que serão armazenados e a relação entre si.
+        </p>
+        <p>
+          Técnica mais utilizada: <em>Diagramas Entidade-Relacionamento (DER)</em>
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Conceitual: Diagramas ER</h2>
+        <img style="max-width: 100%;" src="images/diagrama-er.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Lógico</h2>
+        <p>
+          Modelo de dados visualizado pelo usuário do SGBD.
+        </p>
+        <p>
+          Os dados são organizados de acordo com o SGBD que está sendo utilizado. Logo a modelagem e dependente do SGBD.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Lógico</h2>
+        <p>
+          Em nosso caso, iremos trabalhar com SGBDs relacionais. Em um SGBD relacional, os dados são visualizado na forma de registros/tabelas.
+        </p>
+        <p>
+          Logo, os dados serão modelados em um formato de tabela.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Lógico: Exemplo</h2>
+        <pre>
+          <code>TipoDeProduto(CodTipoProd,DescrTipoProd)
+          </code>
+        </pre>
+        <table>
+          <tr>
+            <td>CodTipoProd</td><td>DescrTipoProd</td>
+          </tr>
+          <tr>
+            <td>1</td><td>Computador</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Impressora</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Lógico: Exemplo</h2>
+        <pre>
+          <code>Produto(CodProd,DescrProd,PrecoProd,CodTipoProd)
+  <em>CodTipoProd referencia TipoDeProduto</em>
+          </code>
+        </pre>
+        <table>
+          <tr>
+            <td>CodProd</td><td>DescrProd</td><td>PrecoProd</td><td>CodTipoProd</td>
+          </tr>
+          <tr>
+            <td>1</td><td>PC notebook Dell</td><td>2.500</td><td>1</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Macbook 2010</td><td>1.800</td><td>1</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Impressora HP</td><td>650</td><td>2</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Modelo Físico</h2>
+        <p>
+          Contém detalhes de armazenamento interno de informações, relacionados principalmente ao desempenho de aplicações de banco de dados.
+        </p>
+        <p>
+          Modelo utilizados por profissionais que fazem <em>tuning</em> de banco de dados.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Projeto de Banco de Dados</h2>
+        <p>
+          Como obter as informações necessárias para modelar o banco de dados da aplicação?
+        </p>
+        <ul>
+          <li>Toda organização possui entidades</li>
+          <li>Toda entidade possui atributos que a caracterizam</li>
+          <li>Logo, se eu quero mapear os dados da minha organização, devo mapear todas as entidades necessárias</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Projeto de Banco de Dados</h2>
+        Em outras palavras...
+        <p class="quote">
+          Através da identificação das entidades, é possível representar os dados que irão compor o Banco de Dados.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Projeto de Banco de Dados</h2>
+        <p>
+          Um projeto de banco de dados geralmente ocorre em duas fases:
+        </p>
+        <ol>
+          <li><b>Modelagem conceitual:</b> Elaboração de um modelo conceitual das entidades necessárias a organização do sistema.</li>
+          <li><b>Projeto lógico:</b> Transformar o modelo conceitual obtido anteriormente em um modelo lógico para o banco de dados que irá gerenciar a aplicação.</li>
+        </ol>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Projeto de Banco de Dados</h2>
+        <p>
+          Caso deseja migrar um banco de dados antigo, devemos aplicar <em>engenharia reversa</em> de forma a obter o modelo conceitual da estrutura antiga, e então gerar o novo modelo lógico com base nessa estrutura.
+        </p>
+      </div>
+    </section>
+    <header class="caption">
+      <h1>Modelos Entidade-Relacionamento</h1>
+      <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+    </header>
+    <section class="slide cover" id="Cover">
+      <div>
+        <h2>Modelos Entidade-Relacionamento</h2>
+        <p>João Eduardo Montandon</p>
+        <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+        <img src="images/wallpaper_coltec_wide.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          A primeira etapa em um projeto de BD é a construção do modelo conceitual.
+        </p>
+        <p>
+          <b>Objetivo:</b> Obter uma descrição independente de plataforma dos dados que serão armazenados.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          <em>Técnica mais utilizada: Abordagem Entidade-Relacionamento.</em>
+        </p>
+        <p>
+          Composta por um modelo de dados, denominado <b>modelo entidade-relacionamento (MER)</b>. Todo MER pode ser representado graficamente e textualmente.
+        </p>
+        <p>
+          Um MER é representado graficamente por meio de um <b>diagrama entidade-relacionamento (DER).</b>
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Abordagem ER</h2>
+        <p>
+          Conceitos centrais do modelo ER:
+        </p>
+        <ul>
+          <li>Entidade</li>
+          <li>Relacionamento</li>
+          <li>Atributos</li>
+          <li>Generalização/Especialização</li>
+          <li>Entidade Associativa</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade</h2>
+        <p class="quote">
+          Conjunto de objetos sobre os quais deseja-se manter informações no banco de dados.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade</h2>
+        <p>
+          Podem representar objetos abstratos ou reais.
+        </p>
+        <p>
+          Uma entidade representa a <b>especificação</b> de um objeto
+        </p>
+        <p>
+          Um objeto específico da entidade pode ser referido como <em>instância</em> ou <em>ocorrência</em>.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade - Exemplo</h2>
+        <p>
+          São representadas por meio de um retângulo.
+        </p>
+        <img style="max-width: 100%; margin: auto;" src="images/entidade.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade - Propriedades</h2>
+        <p>
+          Entidades por si só representam pouco para o sistema
+        </p>
+        <p>
+          É necessário atribuir algumas propriedades às entidades:
+        </p>
+        <ul>
+          <li>Relacionamentos</li>
+          <li>Atributos</li>
+          <li>Generalizações/Especializações</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento</h2>
+        <p class="quote">
+          Conjunto de relações entre as entidades
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento</h2>
+        <p>
+          Representado por meio de um losango
+        </p>
+        <img style="max-width: 100%;" src="images/relacionamento.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Relacionamento</h2>
+        <div class="grid_6">
+          <p>
+            Assim como acontece com as entidades, os relacionamentos também podem ter <b>ocorrências</b>.
+          </p>
+          <p>
+            Neste caso, cada ocorrência mostra uma relação entre as entidades da relação.
+          </p>
+        </div>
+        <div class="grid_6">
+          <img style="max-width: 100%;" src="images/relacionamento_ocorrencia.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_12">
+          <h2>Auto-relacionamento</h2>
+          <p>
+            Nem sempre um relacionamento se refere a entidades diferentes. Quando um relacionamento se refere a mesma entidade, o denominamos como <b>auto-relacionamento</b>
+          </p>
+        </div>
+        <div class="grid_8">
+          <p>
+            Quando houver um auto-relacionamento entre as entidades, devemos declarar o <b>papel</b> que a entidade exerce sobre o relacionamento.
+          </p>
+        </div>
+        <div class="grid_4">
+          <img style="max-width: 100%;" src="images/auto_relacionamento.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento - Cardinalidade</h2>
+        <p>
+          Saber da grandeza de relação entre as entidades é extremamente importante. O MER permite definir o número de ocorrências associadas ao relacionamento.
+        </p>
+        <p>
+          Essa propriedade é denominada <b>cardinalidade</b>.
+        </p>
+        <p>
+          Há dois tipos de cardinalidades: Máxima e mínima.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento - Card. Máxima</h2>
+        <p>
+          Define o número <b>máximo</b> de ocorrências associadas entre si por meio de um relacionamento.
+        </p>
+        <p>
+          Há dois valores para cardinalidade máxima:
+        </p>
+        <ul>
+          <li><code>1</code> No máximo uma ocorrência da entidade relacionada</li>
+          <li><code>N</code> Máximo N ocorrências da entidade relacionada</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento - Card. Máxima</h2>
+        <img style="max-width: 80%;" src="images/cardinalidade.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento - Card. Máxima</h2>
+        <p>
+          A cardinalidade máxima pode ser usada para classificar relacionamentos <b>binários</b>.
+        </p>
+        <p>
+          Relacionamentos clássicos:
+        </p>
+        <ul>
+          <li><code>N:N</code> muitos-para-muitos</li>
+          <li><code>1:N</code> um-para-muitos</li>
+          <li><code>1:1</code> um-para-um</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Relacionamentos 1:1</h2>
+        <div class="grid_9 prefix_3">
+          <img style="max-width: 40%;" src="images/cardinalidade_1_1.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamentos 1:N</h2>
+        <br>
+        <img style="max-width: 100%;" src="images/cardinalidade_1_n.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamentos N:N</h2>
+        <br>
+        <img style="max-width: 100%;" src="images/cardinalidade_n_n.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Relacionamento - Card. Mínima</h2>
+        <p>
+          Define o número <b>mínimo</b> de ocorrências associadas entre si por meio de um relacionamento.
+        </p>
+        <p>
+          Consideradas duas cardinalidades:
+        </p>
+        <ul>
+          <li><b>0 (zero):</b> associação opcional</li>
+          <li><b>1:</b> associação obrigatória</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Relacionamento - Card. Mínima</h2>
+        <div class="grid_9 prefix_3">
+          <img style="max-width: 40%;" src="images/cardinalidade_min.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <img style="max-width:90%;" src="images/exemplo_completo.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Atributo</h2>
+        <div class="grid_8">
+          <p>
+            Dado ou informação que é associado a cada ocorrência de uma entidade ou relacionamento.
+          </p>
+        </div>
+        <div class="grid_4">
+          <img style="max-width: 100%;" src="images/atributo.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_12">
+          <h2>Atributo: Cardinalidade</h2>
+          <p>
+            Atributos também possuem cardinalidade. Por padrão os atributos possuem cardinalidade (1,1).
+          </p>
+        </div>
+        <div class="grid_6">
+          <ul>
+            <li>Mínima: </li>
+            <ul>
+              <li><code>1</code> Obrigatório</li>
+              <li><code>0</code> Opcional</li>
+            </ul>
+            <li>Máxima: </li>
+            <ul>
+              <li><code>1</code> mono-valorado</li>
+              <li><code>N</code> multi-valorado</li>
+            </ul>
+          </ul>
+        </div>
+        <div class="grid_6">
+          <img style="max-width: 100%;" src="images/atributo_cardinalidade.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Atributo em relacionamentos</h2>
+        <p>
+          Relacionamentos também podem possuir atributos próprios.
+        </p>
+        <img style="max-width: 100%;" src="images/atributo_relacionamento.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Atributos: Identificador</h2>
+        <p>
+          Cada entidade deve possuir um <b>código</b> que identifique <b>unicamente</b> suas ocorrências.
+        </p>
+        <p>
+          <b>Identificador:</b> Conjunto de propridades de uma entidade cujo valores tornam única suas ocorrências.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Atributos: Identificador</h2>
+        <img style="max-width:60%;" src="images/atributo_codigo.png" alt="" />
+        <br>
+        <br>
+        <img style="max-width: 75%;" src="images/atributo_cod_composto.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Identificador em Relacionamento</h2>
+        <div class="grid_8">
+          <p>
+            Há casos onde o identificador de uma entidade é composto também por relacionamentos dos quais a entidade participa. Neste caso, denominamos como <b>relacionamento identificador</b>.
+          </p>
+          <p>
+            Neste caso, nos referimos a entidade dependente como <b>entidade fraca</b>.
+          </p>
+        </div>
+        <div class="grid_4">
+          <p>
+            <img style="max-width: 100%;" src="images/atributo_cod_rel.png" alt="" />
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Generalização/Especialização</h2>
+        <p>
+          Conceito que permite atribuir <b>propriedades particulares</b> a um <b>subconjunto de ocorrências especializadas</b> de uma entidade genérica.
+        </p>
+        <p>
+          Representada no diagrama por um triângulo isóceles.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Generalização/Especialização</h2>
+        <img style="max-width: 85%;" src="images/generalizacao.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Generalização/Especialização</h2>
+        <p>
+          A entidade especializada herda todos os atributos da entidade genérica, inclusive o identificador.
+        </p>
+        <p>
+          Permite herança múltipla, porém desde que os pais da entidade pertençam a mesma entidade genérica.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <div class="grid_12">
+          <h2>Generalização/Especialização</h2>
+          <p>
+            As generações/especializações podem ser classificadas em dois tipos: <em>total</em> <em>parcial</em>
+          </p>
+        </div>
+        <div class="grid_6">
+          <img style="max-width: 100%;" src="images/generalizacao_t.png" alt="" />
+        </div>
+        <div class="grid_6">
+          <img style="max-width: 100%;" src="images/generalizacao_p.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade Associativa</h2>
+        <p>
+          Existem situações onde é necessário criar uma relação entre entidade e seu relacionamento.
+        </p>
+        <p>
+          <em>Suponha que desejamos modificar o diagrama abaixo para adicionar informação de quais medicamentos foram prescritos em cada consulta.</em>
+        </p>
+        <img style="max-width: 100%;" src="images/associativa_intro.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Entidade Associativa</h2>
+        <p style="text-align: center; font-size: 1.4em;">
+          <em>"Com qual entidade a entidade MEDICAMENTO deve se relacionar?"</em>
+        </p>
+        <p>
+          Se MEDICAMENTO se relacionar a MEDICO, perdemos a informação do paciente.
+        </p>
+        <p>
+          Se MEDICAMENTO se relacionar a PACIENTE, perde-se a informação do médico.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <!-- <h2>Entidade Associativa</h2> -->
+        <div class="grid_11 prefix_1">
+          <img style="max-width: 70%;" src="images/associativa_pre.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <img style="max-width: 90%;" src="images/associativa.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2 style="margin-bottom: 10px;">Resumão</h2>
+        <div class="grid_10 prefix_2">
+          <img style="max-width: 65%;" src="images/mer_simbolos.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <header class="caption">
+      <h1>Abordagem Relacional</h1>
+      <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+    </header>
+    <section class="slide cover" id="Cover">
+      <div>
+        <h2>Abordagem Relacional</h2>
+        <p>João Eduardo Montandon</p>
+        <p>Desenvolvimento de Aplicativos Web - COLTEC/MG</p>
+        <img style="max-width: 100%;" src="images/wallpaper_coltec_wide.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          <b>Abordagem relacional:</b> Modelagem de dados utilizada nos SGBDs do tipo relacional.
+        </p>
+        <p>
+          Modelagem em nível lógico (específica por SGBD).
+        </p>
+        <p>
+          Proposta em 1970. Desde então, padrão de modelagem de dados da indústria de TI.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          A abordagem relacional gira em torno de quatro conceitos fundamentais:
+        </p>
+        <ul>
+          <li>Tabela</li>
+          <li>Coluna</li>
+          <li>Linha</li>
+          <li>Campo</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Introdução</h2>
+        <p>
+          Um banco de dados relacional é composto por uma coleção de entidades, representadas por <b>tabelas</b>.
+        </p>
+        <p>
+          Cada tabela possui uma ou mais tuplas (<b>linhas</b>), que representam "instâncias" daquela tabela.
+        </p>
+        <p>
+          Uma tabela é formada por um conjunto de <b>colunas</b> denominadas atributos.
+        </p>
+        <p>
+          Cada coluna possui um tipo associado, denominado <b>domínio</b>.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Abordagem Relacional: Exemplo</h2>
+        <img style="max-width: 100%;" src="images/relacional.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Tabela</h2>
+        <p>
+          Representa as entidades do seu sistema. Possui papel central na modelagem relacional.
+        </p>
+        <p>
+          Composta por um conjunto não ordenado de linhas, que por sua vez é composta por vários campos.
+        </p>
+        <p>
+          Cada campo pertence necessáriamente a uma coluna, que define as propriedades daquele campo.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Tabela</h2>
+        <img style="max-width: 100%;" src="images/tabela.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Tabelas: Propriedades</h2>
+        <p>
+          De acordo com o modelo relacional, as tabelas possuem as seguintes propriedades:
+        </p>
+        <ul>
+          <li>Não existem linhas e colunas duplicadas</li>
+          <li>A ordem das linhas e colunas não é significativa</li>
+          <li>Os valores dos campos são atômicos e monovovalorados</li>
+          <li>Se relacionam entre si por meio de <b>chaves</b></li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chaves</h2>
+        <p>
+          Conceito usado para especificar restrições de integridade básicas de um SGBD relacional.
+        </p>
+        <p>
+          Possui três tipos:
+        </p>
+        <ul>
+          <li>Chave primária</li>
+          <li>Chave estrangeira</li>
+          <li>Chave alternativa (única)</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Primária</h2>
+        <p>
+            <b>Chave Primária: </b> Coluna ou uma combinação de colunas cujos valores distinguem uma linha das demais dentro de uma tabela.
+        </p>
+        <p>
+          Pode ser simples ou composta (uma ou mais colunas).
+        </p>
+        <p>
+          Deve ser <b>mínima</b>.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Chave Primária: Exemplo</h2>
+        <div class="grid_9">
+          <p>
+            <img style="max-width: 100%;" src="images/primaria.png" alt="" />
+          </p>
+          <p>
+              <img style="max-width: 100%;" src="images/primaria_composta.png" alt="" />
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Estrangeira</h2>
+        <p>
+          <b>Chave Estrangeira: </b> Coluna ou uma combinação de colunas, cujos valores aparecem necessariamente na chave primária de uma tabela
+        </p>
+        <p>
+          Permite a relação entre tabelas em um banco de dados relacional.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Chave Estrangeira: Exemplo</h2>
+        <div class="grid_9">
+          <img style="max-width: 100%;" src="images/chave_estrangeira.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Estrangeira: Restrições</h2>
+        <p>
+          A utilização de chaves estrangeiras impõe diversas restrições que são verificadas automaticamente pelo banco de dados quando seus dados sofrem alterações.
+        </p>
+        <p>
+          Tais restrições ajudam a manter a integridade dos dados armazenados pelo banco de dados.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Estrangeira: Restrições</h2>
+        <ul>
+          <li><b>Inclusão de uma linha na tabela que contém a chave estrangeira:</b> O valor da chave estrangeira deve aparecer na coluna da chave primária referenciada.</li>
+          <li><b>Alteração do valor da chave estrangeira:</b> O novo valor da chave estrangeira deve aparecer na coluna da chave primária referenciada.</li>
+          <li><b>Exclusão da linha da tabela que contém a chave primária:</b> Na coluna da chave estrangeira não deve haver o valor da chave primária que está sendo excluída.</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Estrangeira: Auto-referenciamento</h2>
+        <p>
+          Apesar do termo "estrangeiro", uma chave estrangeira pode referenciar a chave primária da própria tabela.
+        </p>
+        <img style="max-width: 100%;" src="images/estrangeira_auto_ref.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Alternativa</h2>
+        <p>
+          Mais de uma coluna ou combinações de colunas podem servir para distinguir uma linha das demais.
+        </p>
+        <p>
+          Uma das colunas (ou combinação de colunas) é escolhida como chave primária.
+        </p>
+        <p>
+          As demais colunas ou combinações são denominada chaves <b>alternativas</b>.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Chave Alternativa: Exemplo</h2>
+        <img style="max-width: 100%;" src="images/chave_alternativa.png" alt="" />
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Domínio da Coluna</h2>
+        <p>
+          Conjunto de valores que podem aparecer em uma coluna. Em outras palavras, define o <b>tipo de dados</b> das colunas.
+        </p>
+        <p>
+          O próprio banco de dados possui uma série de tipos que são utilizados para definir o domínio da coluna, tais como inteiros, strings, reais, binários, booleanos, etc.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Domínio da Coluna: <code>NULL</code></h2>
+        <p>
+          Um valor de campo pode admitir um valor vazio. Nesse caso ele é representado por <code>NULL</code>.
+        </p>
+        <ul>
+          <li><b>Coluna Obrigatória:</b> Quando o valor <code>NULL</code> não é permitido</li>
+          <li><b>Coluna opcional:</b> Quando o valor <code>NULL</code> é permitido</li>
+        </ul>
+        <p class="note">
+          Quais colunas de uma tabela devem ser obrigatórias??
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Restrições de Integridade</h2>
+        <p>
+          O objetivo primordial de um SGBD é <b>garantir a integridade</b> de seus dados.
+        </p>
+        <p>
+          Para isso, os SGBDs oferecem uma série de mecanismos que preveêm a especificação de restrições de integridade de dados.
+        </p>
+        <p>
+          <b>Restrição de integridade:</b>  Regra de consistência de dados que é garantidade pelo próprio SGBD.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Restrições Básicas</h2>
+        <p>
+          São garantidas pelo próprio SGBD por padrão, através de uma especificação declarativa.
+        </p>
+        <p>
+          O desenvolvedor não precisa implementar procedimentos para garantir tais restrições
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Restrições Básicas</h2>
+        <ol>
+          <li><b>Integridade de Domínio:</b> O valor de um campo deve obedecer ao seu tipo</li>
+          <li><b>Integridade de Vazio:</b> Especifica se os campos podem ou não ter valores vazios</li>
+          <li><b>Integridade de Chave:</b> Verifica a unicidade dos valores das chaves primárias</li>
+          <li><b>Integridade Referencial:</b> Verifica os valores das chaves estrangeiras</li>
+        </ol>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Restrições Semânticas</h2>
+        <p>
+          Restrições que são específicas do sistema que está sendo implementado.
+        </p>
+        <p>
+          Exemplo: <em>Um empregado não pode ter um salário maior que seu superior imediato.</em>
+        </p>
+        <p>
+          Essas regras podem ser implementadas a nível do banco de dados, porém <b style="font-size: 2em;">NÃO</b> são recomendadas.
+        </p>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Especificando um Banco de Dados relacional</h2>
+        <p>
+          Um <b>esquema</b> de banco de dados relacional deve conter no mínimo:
+        </p>
+        <ul>
+          <li>Tabelas que formam o banco</li>
+          <li>Colunas que as Tabelas possuem</li>
+          <li>Restrições de integridade</li>
+        </ul>
+      </div>
+    </section>
+    <section class="slide">
+      <div class="container_12">
+        <h2>Esquema Relacional: Exemplo</h2>
+        <div class="grid_8 prefix_1" >
+          <img  style="max-width: 100%;" src="images/mer.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Esquema Relacional: Exemplo</h2>
+        <pre>
+          <code style="font-size: 0.7em;">
+jogador (<u>jog_cod</u>, jog_nome, jog_data_nascimento, jog_salario)
+tecnico (<u>tec_cod</u>, tec_nome, jog_cod)
+   <span style="color: green;">jog_cod referencia jogador</span>
+escalacao (<u>esc_cod</u>, jog_cod, esc_data)
+   <span style="color: green;">jog_cod referencia jogador</span>
+clube (<u>clud_cod</u>, clu_nome, tec_cod)
+   <span style="color: green;">tec_cod referencia tecnico</span>
+          </code>
+        </pre>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Esquema Relacional: Exemplo</h2>
+        <pre>
+          <code style="font-size: 0.7em;">
+contrato (<u>jog_cod</u>, <u>clu_cod</u>)
+   <span style="color: green;">jog_cod referencia jogador</span>
+   <span style="color: green;">clube_cod referencia clube</span>
+partida (<u>par_cod</u>, clu_cod_casa, clu_cod_visitante, est_cod, par_data)
+   <span style="color: green;">clu_cod_casa referencia clube</span>
+   <span style="color: green;">clu_cod_visitante referencia clube</span>
+   <span style="color: green;">est_cod referencia estadio</span>
+estadio (<u>est_cod</u>, est_nome, est_capacidade)
+          </code>
+        </pre>
+      </div>
+    </section>
+    <section class="slide">
+      <div>
+        <h2>Referências</h2>
+        <p>
+          HEUSER, Carlos A.; Projeto de Banco de Dados; 6a Edição; Porto Alegre, 2008.
+        </p>
+        <p>
+          <a href="http://www.w3schools.com/sql/">w3schools: SQL</a>.
+        </p>
+      </div>
+    </section>
+    <p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+    <!-- Barra de progresso, comente se deseja remover da apresentação -->
+    <div class="progress"><div></div></div>
+    <script src="libs/shower/shower.min.js"></script>
+    <script src="libs/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
